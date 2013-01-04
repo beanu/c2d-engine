@@ -1,8 +1,8 @@
-package info.u250.spriter.draw;
+package info.u250.spriter.plugin.draw;
 
 
-import info.u250.spriter.file.FileLoader;
-import info.u250.spriter.file.Reference;
+import info.u250.spriter.plugin.file.FileLoader;
+import info.u250.spriter.plugin.file.Reference;
 
 public abstract class AbstractDrawer<L> {
 	

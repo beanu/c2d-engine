@@ -1,16 +1,16 @@
-package info.u250.spriter.mergers;
+package info.u250.spriter.plugin.mergers;
 
 import info.u250.spriter.dom.AnimationObject;
 import info.u250.spriter.dom.AnimationObjectRef;
 import info.u250.spriter.dom.Key;
-import info.u250.spriter.objects.SpriterObject;
+import info.u250.spriter.plugin.objects.SpriterObject;
 
 public class SpriterObjectMerger implements Merger<AnimationObjectRef, Key, SpriterObject> {
 
 	public SpriterObject merge(AnimationObjectRef ref, Key key) {
 
-		AnimationObject obj = key.getObject().get(0); 
-		
+		AnimationObject obj = key.getObject().get(0);
+
 		SpriterObject spriterObject = new SpriterObject();
 		spriterObject.setId(ref.getId());
 		spriterObject.setTimeline(ref.getTimeline());
@@ -27,7 +27,7 @@ public class SpriterObjectMerger implements Merger<AnimationObjectRef, Key, Spri
 		spriterObject.setAlpha(obj.getA().floatValue());
 		spriterObject.setScaleX(obj.getScaleX().floatValue());
 		spriterObject.setScaleY(obj.getScaleY().floatValue());
-		
+
 		return spriterObject;
 	}
 

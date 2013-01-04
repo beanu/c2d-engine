@@ -1,6 +1,6 @@
-package info.u250.spriter.draw;
+package info.u250.spriter.plugin.draw;
 
-import info.u250.spriter.file.Reference;
+import info.u250.spriter.plugin.file.Reference;
 
 public class DrawInstruction {
 

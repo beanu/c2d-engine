@@ -1,4 +1,4 @@
-package info.u250.spriter.objects;
+package info.u250.spriter.plugin.objects;
 
 public class SpriterModObject {
 	

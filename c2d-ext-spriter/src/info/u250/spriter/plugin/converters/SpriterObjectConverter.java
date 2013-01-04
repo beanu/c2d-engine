@@ -1,7 +1,7 @@
-package info.u250.spriter.converters;
+package info.u250.spriter.plugin.converters;
 
 import info.u250.spriter.dom.AnimationObject;
-import info.u250.spriter.objects.SpriterObject;
+import info.u250.spriter.plugin.objects.SpriterObject;
 
 public class SpriterObjectConverter implements Converter<AnimationObject, SpriterObject>{
 

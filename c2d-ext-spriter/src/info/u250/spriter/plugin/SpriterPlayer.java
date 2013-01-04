@@ -1,14 +1,14 @@
-package info.u250.spriter;
+package info.u250.spriter.plugin;
 
 import info.u250.spriter.dom.Animation;
 import info.u250.spriter.dom.SpriterData;
-import info.u250.spriter.draw.AbstractDrawer;
-import info.u250.spriter.draw.DrawInstruction;
-import info.u250.spriter.file.Reference;
-import info.u250.spriter.objects.SpriterBone;
-import info.u250.spriter.objects.SpriterKeyFrame;
-import info.u250.spriter.objects.SpriterModObject;
-import info.u250.spriter.objects.SpriterObject;
+import info.u250.spriter.plugin.draw.AbstractDrawer;
+import info.u250.spriter.plugin.draw.DrawInstruction;
+import info.u250.spriter.plugin.file.Reference;
+import info.u250.spriter.plugin.objects.SpriterBone;
+import info.u250.spriter.plugin.objects.SpriterKeyFrame;
+import info.u250.spriter.plugin.objects.SpriterModObject;
+import info.u250.spriter.plugin.objects.SpriterObject;
 
 import java.util.List;
 

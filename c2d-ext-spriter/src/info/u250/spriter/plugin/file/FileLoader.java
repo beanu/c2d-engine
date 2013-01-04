@@ -1,4 +1,4 @@
-package info.u250.spriter.file;
+package info.u250.spriter.plugin.file;
 
 import java.util.HashMap;
 

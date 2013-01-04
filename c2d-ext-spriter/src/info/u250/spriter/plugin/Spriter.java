@@ -1,8 +1,8 @@
-package info.u250.spriter;
+package info.u250.spriter.plugin;
 
 import info.u250.spriter.dom.SpriterData;
-import info.u250.spriter.file.FileLoader;
-import info.u250.spriter.file.Reference;
+import info.u250.spriter.plugin.file.FileLoader;
+import info.u250.spriter.plugin.file.Reference;
 
 /**
  * 

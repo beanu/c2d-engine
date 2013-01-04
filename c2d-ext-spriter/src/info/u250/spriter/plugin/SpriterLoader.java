@@ -1,4 +1,4 @@
-package info.u250.spriter;
+package info.u250.spriter.plugin;
 
 import info.u250.spriter.dom.SpriterData;
 

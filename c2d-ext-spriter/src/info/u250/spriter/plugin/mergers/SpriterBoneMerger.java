@@ -1,16 +1,16 @@
-package info.u250.spriter.mergers;
+package info.u250.spriter.plugin.mergers;
 
 import info.u250.spriter.dom.Bone;
 import info.u250.spriter.dom.BoneRef;
 import info.u250.spriter.dom.Key;
-import info.u250.spriter.objects.SpriterBone;
+import info.u250.spriter.plugin.objects.SpriterBone;
 
-public class SpriterBoneMerger implements Merger<BoneRef,Key,SpriterBone>{
+public class SpriterBoneMerger implements Merger<BoneRef, Key, SpriterBone> {
 
 	public SpriterBone merge(BoneRef ref, Key key) {
-		
+
 		Bone obj = key.getBone();
-		
+
 		SpriterBone bone = new SpriterBone();
 		bone.setTimeline(ref.getTimeline());
 		bone.setParent(ref.getParent());

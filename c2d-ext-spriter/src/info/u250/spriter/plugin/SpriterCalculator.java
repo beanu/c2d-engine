@@ -1,6 +1,6 @@
-package info.u250.spriter;
+package info.u250.spriter.plugin;
 
-import info.u250.spriter.objects.SpriterBone;
+import info.u250.spriter.plugin.objects.SpriterBone;
 
 /**
  * A class which provides methods to calculate Spriter specific issues,

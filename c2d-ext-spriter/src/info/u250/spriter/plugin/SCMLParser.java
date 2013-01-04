@@ -1,9 +1,10 @@
-package info.u250.spriter;
+package info.u250.spriter.plugin;
 
 import info.u250.spriter.dom.SpriterData;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import com.badlogic.gdx.Gdx;
 
 public class SCMLParser {

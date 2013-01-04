@@ -1,9 +1,9 @@
-package info.u250.spriter;
+package info.u250.spriter.plugin;
 
 import info.u250.spriter.dom.Animation;
 import info.u250.spriter.dom.SpriterData;
-import info.u250.spriter.mergers.SpriterKeyFrameBuilder;
-import info.u250.spriter.objects.SpriterKeyFrame;
+import info.u250.spriter.plugin.mergers.SpriterKeyFrameBuilder;
+import info.u250.spriter.plugin.objects.SpriterKeyFrame;
 
 import java.util.ArrayList;
 import java.util.Arrays;
