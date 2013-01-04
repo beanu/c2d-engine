@@ -43,6 +43,7 @@ public class SpriterPlayer {
 
 	private SpriterData spriterData;
 	private Animation animation;
+	private boolean looping;
 	private long frame = 0;
 	private int frameSpeed = 30, transitionSpeed = 30;
 	private int animationIndex = 0;
@@ -98,7 +99,7 @@ public class SpriterPlayer {
 			tmpBones[i] = new SpriterBone();
 		this.lastFrame.setBones(tmpBones);
 		this.lastFrame.setObjects(tmpObjs);
-
+		looping=true;
 	}
 
 	/**
@@ -147,40 +148,47 @@ public class SpriterPlayer {
 	 * @param yOffset
 	 */
 	public void update(float xOffset, float yOffset) {
-		// Fetch information
-		SpriterKeyFrame[] keyframes = this.keyframes.get(animationIndex);
-		SpriterKeyFrame firstKeyFrame;
-		SpriterKeyFrame secondKeyFrame;
-		if (this.transitionFixed) {
-			firstKeyFrame = keyframes[this.currentKey];
-			secondKeyFrame = keyframes[(this.currentKey + 1) % keyframes.length];
+		if(looping){
+			// Fetch information
+			SpriterKeyFrame[] keyframes = this.keyframes.get(animationIndex);
+			SpriterKeyFrame firstKeyFrame;
+			SpriterKeyFrame secondKeyFrame;
+			if (this.transitionFixed) {
+				firstKeyFrame = keyframes[this.currentKey];
+				secondKeyFrame = keyframes[(this.currentKey + 1) % keyframes.length];
 
-			// Update
-			if (this.frame > this.animation.getLength())
-				this.frame = 0;
-			this.frame += this.frameSpeed;
-			if (this.frame > keyframes[this.currentKey].getEndTime()) {
-				this.currentKey = (this.currentKey + 1) % keyframes.length;
-				this.frame = keyframes[this.currentKey].getStartTime();
+				// Update
+				if (this.frame > this.animation.getLength())
+					this.frame = 0;
+				this.frame += this.frameSpeed;
+				if (this.frame > keyframes[this.currentKey].getEndTime()) {
+					if(this.currentKey==keyframes.length-1 && !animation.isLooping()){
+						looping=false;
+						return;
+					}else{
+						this.currentKey = (this.currentKey + 1) % keyframes.length;
+						this.frame = keyframes[this.currentKey].getStartTime();
+					}
+				}
+			} else {
+				firstKeyFrame = keyframes[0];
+				secondKeyFrame = this.lastFrame;
+				float temp = (float) (this.fixCounter) / (float) this.fixMaxSteps;
+				this.frame = this.lastFrame.getStartTime() + (long) (this.fixMaxSteps * temp);
+				this.fixCounter = Math.min(this.fixCounter + this.transitionSpeed, this.fixMaxSteps);
+				// Update
+				if (this.fixCounter == this.fixMaxSteps) {
+					this.frame = 0;
+					this.fixCounter = 0;
+					this.transitionFixed = true;
+					firstKeyFrame.setStartTime(0);
+				}
 			}
-		} else {
-			firstKeyFrame = keyframes[0];
-			secondKeyFrame = this.lastFrame;
-			float temp = (float) (this.fixCounter) / (float) this.fixMaxSteps;
-			this.frame = this.lastFrame.getStartTime() + (long) (this.fixMaxSteps * temp);
-			this.fixCounter = Math.min(this.fixCounter + this.transitionSpeed, this.fixMaxSteps);
-			// Update
-			if (this.fixCounter == this.fixMaxSteps) {
-				this.frame = 0;
-				this.fixCounter = 0;
-				this.transitionFixed = true;
-				firstKeyFrame.setStartTime(0);
-			}
+			this.currenObjectsToDraw = firstKeyFrame.getObjects().length;
+			// Interpolate
+			this.interpolateBones(firstKeyFrame, secondKeyFrame, xOffset, yOffset);
+			this.interpolateObjects(firstKeyFrame, secondKeyFrame, xOffset, yOffset);
 		}
-		this.currenObjectsToDraw = firstKeyFrame.getObjects().length;
-		// Interpolate
-		this.interpolateBones(firstKeyFrame, secondKeyFrame, xOffset, yOffset);
-		this.interpolateObjects(firstKeyFrame, secondKeyFrame, xOffset, yOffset);
 	}
 
 	/**
@@ -380,6 +388,7 @@ public class SpriterPlayer {
 			this.fixCounter = 0;
 			this.animationIndex = animationIndex;
 			this.animation = this.spriterData.getEntity().get(0).getAnimation().get(animationIndex);
+			this.looping=true;
 		}
 	}
 

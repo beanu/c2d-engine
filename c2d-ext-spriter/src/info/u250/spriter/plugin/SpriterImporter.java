@@ -64,7 +64,7 @@ public class SpriterImporter {
 				animation.setId(animationElement.getIntAttribute("id"));
 				animation.setName(animationElement.getAttribute("name"));
 				animation.setLength(animationElement.getIntAttribute("length"));
-				animation.setLooping(animationElement.getBoolean("looping", false));
+				animation.setLooping(animationElement.getBoolean("looping", true));
 				// mainline
 				Element mainlineElement = animationElement.getChildByName("mainline");
 				MainLine mainline = new MainLine();
